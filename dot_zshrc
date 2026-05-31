@@ -1,0 +1,214 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
+#
+# ~/.zshrc
+#
+
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in Zsh Vi Mode
+# zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# Add in snippets
+# zinit snippet OMZP::git
+# zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+# zinit snippet OMZP::aws
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
+# zinit snippet OMZP::command-not-found
+
+# Load completions
+autoload -Uz compinit && compinit
+
+zinit cdreplay -q
+
+# Keybindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+
+# bindkey '^ ' autosuggest-execute
+
+# Keybindings
+#bindkey -e
+#bindkey '^ ' autosuggest-execute
+#bindkey '^f' autosuggest-accept
+#bindkey '^p' history-search-backward
+#bindkey '^n' history-search-forward
+#bindkey "^R" history-incremental-search-backward
+
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+zstyle ':completion:*' fzf-search-display true
+
+# Aliases
+
+alias ls='lsd'
+alias la="ls -a"
+alias ll="ls -l"
+
+alias grep='grep --color=auto'
+
+alias vim='nvim'
+alias c='clear'
+alias fzfprev='fzf --preview="bat --color=always {}"'
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+alias src="source ~/.zshrc"
+
+# Arch Aliases
+alias pac="sudo pacman"
+
+# Fedora aliases
+alias dnu="sudo dnf upgrade"
+alias dni="sudo dnf install"
+alias dns="sudo dnf search"
+alias dnr="sudo dnf remove"
+alias dnl="sudo dnf list --installed"
+alias dnp="sudo dnf provides"
+alias dnh="sudo dnf history"
+
+# Git
+alias gst="git status"
+alias ga="git add ."
+alias gi="git init"
+alias gra="git remote add"
+alias gc="git commit -am"
+alias gr="git reset --hard"
+alias gps="git push"
+alias gpl="git pull"
+
+# Tmux
+alias ta='tmux attach -t'
+alias tn='tmux new-session -s'
+alias tk='tmux kill-session -t'
+alias tl='tmux list-sessions'
+alias td='tmux detach'
+alias tc='clear; tmux clear-history; clear'
+
+# Better Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+eval $(thefuck --alias)
+
+# Shell integrations
+# eval "$(fzf --zsh)"
+source <(fzf --zsh)
+eval "$(zoxide init --cmd cd zsh)"
+
+# PATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+# Assert dominance
+# pfetch
+
+# Set Environment Variables
+export EDITOR=nvim
+
+# Enter tmux-session at startup
+# tmux
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Turso
+export PATH="$PATH:$HOME/.turso"
+# . "$HOME/.deno/env"
+
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
+export PATH="$PATH:$HOME/go/bin"
+
+# Created by `pipx` on 2025-04-21 21:20:25
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/flutter/bin:$PATH"
+
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH="$HOME/.bb:$PATH"
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+# END opam configuration
+
+# Self-Help
+$HOME/Documents/projects/scripts/elixir/days_till_efz.exs
+
+# Scala Tools
+export PATH="$PATH:$HOME/.local/share/coursier/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# sqlc completions
+eval $(sqlc completion zsh)
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+eval "$(starship init zsh)"
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export ASDF_DATA_DIR="$HOME/.asdf/data"
+
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+export PATH="$HOME/dotfiles/scripts/bin:$PATH"
+source ~/.local/share/mill/completion/mill-completion.sh # MILL_SOURCE_COMPLETION_LINE
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+export PATH="$HOME/.cargo/bin:$PATH"
