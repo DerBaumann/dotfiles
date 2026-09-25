@@ -16,14 +16,14 @@ return {
       max_lines = 2, -- Shows the parent context up to 2 lines above
     },
   },
-  {
-    "rayliwell/tree-sitter-rstml",
-    dependencies = { "nvim-treesitter" },
-    build = ":TSUpdate",
-    config = function()
-      require("tree-sitter-rstml").setup()
-    end,
-  },
+  -- {
+  --   "rayliwell/tree-sitter-rstml",
+  --   dependencies = { "nvim-treesitter" },
+  --   build = ":TSUpdate",
+  --   config = function()
+  --     require("tree-sitter-rstml").setup()
+  --   end,
+  -- },
   -- -- Automatic tag closing and renaming (optional but highly recommended)
   -- {
   --   "windwp/nvim-ts-autotag",

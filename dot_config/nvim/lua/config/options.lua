@@ -12,27 +12,27 @@ vim.filetype.add({ extension = { templ = "templ" } })
 vim.g.maplocalleader = ","
 vim.lsp.enable("gleam")
 
-vim.lsp.config("rust_analyzer", {
-  -- Other Configs ...
-  settings = {
-    ["rust-analyzer"] = {
-      -- Other Settings ...
-      cargo = {
-        features = "all", -- Enable all features
-      },
-      procMacro = {
-        enable = true,
-        -- ignored = {
-        --   leptos_macro = {
-        --     -- optional: --
-        --     -- "component",
-        --     "server",
-        --   },
-        -- },
-      },
-    },
-  },
-})
+-- vim.lsp.config("rust_analyzer", {
+-- Other Configs ...
+-- settings = {
+-- ["rust-analyzer"] = {
+-- Other Settings ...
+-- cargo = {
+-- features = "all", -- Enable all features
+-- },
+-- procMacro = {
+-- enable = true,
+-- ignored = {
+--   leptos_macro = {
+--     -- optional: --
+--     -- "component",
+--     "server",
+--   },
+-- },
+--       },
+--     },
+--   },
+-- })
 
 -- vim.lsp.config("emmet_language_server", {
 --   filetypes = {

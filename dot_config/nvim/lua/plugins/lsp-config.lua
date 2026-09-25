@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   init_options = {
     userLanguages = {
-      rust = "html",
+      -- rust = "html",
     },
   },
   opts = {
