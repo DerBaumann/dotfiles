@@ -20,6 +20,15 @@ set $browser firefox
 # Your preferred application launcher
 set $menu wmenu-run
 
+### Network Configuration
+#
+# Start Network Manager Applet
+exec --no-startup-id nm-connection-editor
+exec --no-startup-id nm-applet --indicator
+#
+# Start Bluetooth Applet
+exec --no-startup-id blueman-applet
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
