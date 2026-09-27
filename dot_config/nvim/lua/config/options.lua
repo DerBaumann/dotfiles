@@ -9,6 +9,10 @@ vim.filetype.add({
 })
 vim.filetype.add({ extension = { templ = "templ" } })
 
+vim.filetype.add({ pattern = {
+  [".*%.django%.html"] = "htmldjango",
+} })
+
 vim.g.maplocalleader = ","
 vim.lsp.enable("gleam")
 
