@@ -213,3 +213,4 @@ source ~/.local/share/mill/completion/mill-completion.sh # MILL_SOURCE_COMPLETIO
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
