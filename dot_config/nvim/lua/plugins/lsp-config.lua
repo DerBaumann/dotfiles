@@ -11,5 +11,18 @@ return {
         opts.filetypes = { "svelte", "svx" }
       end,
     },
+    servers = {
+      emmet = {
+        filetypes = {
+          "html",
+          "blade",
+          "php",
+          "css",
+          "scss",
+          "javascriptreact",
+          "typescriptreact",
+        },
+      },
+    },
   },
 }
