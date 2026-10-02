@@ -40,7 +40,7 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 -- keymap.set("n", "N", "Nzzzv", { desc = "Text" })
 
 -- delete and paste whilst still keeping current string in clipboard
-keymap.set("x", "<leader>p", '"_dP', { desc = "Delete marked text and paste whilst preserving the current clipboard" })
+keymap.set("x", "<leader>pp", '"_dP', { desc = "Delete marked text and paste whilst preserving the current clipboard" })
 
 -- copy to system clipboard
 -- keymap.set("n", "<leader>y", '"+y', { desc = "Copy to the system clipboard" })

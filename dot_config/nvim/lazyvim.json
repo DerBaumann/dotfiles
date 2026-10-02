@@ -16,6 +16,8 @@
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.lang.yaml",
+    "lazyvim.plugins.extras.lang.php",
+    "lazyvim.plugins.extras.lang.twig",
     "lazyvim.plugins.extras.linting.eslint"
   ],
   "install_version": 8,
@@ -24,3 +26,4 @@
   },
   "version": 8
 }
+
