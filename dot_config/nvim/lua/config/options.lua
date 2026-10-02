@@ -16,6 +16,18 @@ vim.filetype.add({ pattern = {
 vim.g.maplocalleader = ","
 vim.lsp.enable("gleam")
 
+vim.lsp.config("pyright", {
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "strict",
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+
 -- vim.lsp.config("rust_analyzer", {
 -- Other Configs ...
 -- settings = {

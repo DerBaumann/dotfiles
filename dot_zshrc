@@ -216,3 +216,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 eval "$(~/.local/bin/mise activate zsh)"
 export PATH="$HOME/.config/emacs/bin:$PATH"
+source ~/.symfony_completion
