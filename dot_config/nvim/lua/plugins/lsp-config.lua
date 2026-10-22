@@ -12,7 +12,7 @@ return {
       end,
     },
     servers = {
-      emmet = {
+      emmet_language_server = {
         filetypes = {
           "html",
           "blade",
@@ -21,6 +21,35 @@ return {
           "scss",
           "javascriptreact",
           "typescriptreact",
+          "templ",
+        },
+        init_options = {
+          includeLanguages = {
+            templ = "html",
+          },
+        },
+      },
+      tailwindcss = {
+        filetypes = {
+          "html",
+          "blade",
+          "php",
+          "css",
+          "scss",
+          "javascriptreact",
+          "typescriptreact",
+          "templ",
+        },
+        init_options = {
+          includeLanguages = {
+            templ = "html",
+          },
+        },
+      },
+      html = {
+        filetypes = {
+          "html",
+          "templ",
         },
       },
     },
