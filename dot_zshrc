@@ -221,8 +221,5 @@ eval "$(~/.local/bin/mise activate zsh)"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 source ~/.symfony_completion
 
-<<<<<<< Updated upstream
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-=======
 [ -f "/home/pwegmann/.ghcup/env" ] && . "/home/pwegmann/.ghcup/env" # ghcup-env
->>>>>>> Stashed changes
