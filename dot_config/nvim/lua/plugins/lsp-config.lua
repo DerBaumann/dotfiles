@@ -3,14 +3,23 @@ return {
   init_options = {
     userLanguages = {
       -- rust = "html",
+      templ = "html",
     },
+    -- includeLanguages = {
+    --   templ = "html",
+    -- },
   },
-  opts = {
-    setup = {
-      svelte = function(_, opts)
-        opts.filetypes = { "svelte", "svx" }
-      end,
+
+  emmet_language_server = {
+    include = {
+      "html",
+      "css",
+      "javascriptreact",
+      "typescriptreact",
+      "templ",
+      -- "rust",
     },
+<<<<<<< Updated upstream
     servers = {
       emmet_language_server = {
         filetypes = {
@@ -51,7 +60,35 @@ return {
           "html",
           "templ",
         },
+=======
+    filetypes = {
+      "html",
+      "blade",
+      "php",
+      "css",
+      "scss",
+      "javascriptreact",
+      "typescriptreact",
+      "templ",
+      -- "rust",
+    },
+    init_options = {
+      includeLanguages = {
+        templ = "html",
+>>>>>>> Stashed changes
       },
     },
+  },
+
+  tailwindcss = {
+    filetypes = {
+      "html",
+      "css",
+      "javascriptreact",
+      "typescriptreact",
+      "templ",
+      -- "rust",
+    },
+    init_options = { userLanguages = { templ = "html" } },
   },
 }

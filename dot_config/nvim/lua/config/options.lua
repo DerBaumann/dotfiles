@@ -50,22 +50,43 @@ vim.lsp.config("pyright", {
 --   },
 -- })
 
--- vim.lsp.config("emmet_language_server", {
---   filetypes = {
---     "html",
---     "css",
---     "javascriptreact",
---     "typescriptreact",
---     "rust",
---   },
--- })
---
--- vim.lsp.config("tailwindcss", {
---   filetypes = {
---     "html",
---     "css",
---     "javascriptreact",
---     "typescriptreact",
---     "rust",
---   },
--- })
+vim.lsp.config("emmet_language_server", {
+  include = {
+    "html",
+    "css",
+    "javascriptreact",
+    "typescriptreact",
+    "templ",
+    -- "rust",
+  },
+  filetypes = {
+    "html",
+    "blade",
+    "php",
+    "css",
+    "scss",
+    "javascriptreact",
+    "typescriptreact",
+    "templ",
+    -- "rust",
+  },
+  init_options = {
+    includeLanguages = {
+      templ = "html",
+    },
+  },
+})
+
+vim.lsp.enable("emmet_language_server")
+
+vim.lsp.config("tailwindcss", {
+  filetypes = {
+    "html",
+    "css",
+    "javascriptreact",
+    "typescriptreact",
+    "templ",
+    -- "rust",
+  },
+  init_options = { userLanguages = { templ = "html" } },
+})

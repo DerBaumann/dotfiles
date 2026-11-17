@@ -104,6 +104,10 @@ alias dnl="sudo dnf list --installed"
 alias dnp="sudo dnf provides"
 alias dnh="sudo dnf history"
 
+alias lvim="NVIM_APPNAME='nvim' nvim"
+alias ogvim="NVIM_APPNAME='nvim.bak' nvim"
+alias kvim="NVIM_APPNAME='kickstart.nvim' nvim"
+
 # Git
 alias gst="git status"
 alias ga="git add ."
@@ -161,7 +165,6 @@ export EDITOR=nvim
 export PATH="$PATH:$HOME/.turso"
 # . "$HOME/.deno/env"
 
-[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
 
 export PATH="$PATH:$HOME/go/bin"
 
@@ -218,4 +221,8 @@ eval "$(~/.local/bin/mise activate zsh)"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 source ~/.symfony_completion
 
+<<<<<<< Updated upstream
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+=======
+[ -f "/home/pwegmann/.ghcup/env" ] && . "/home/pwegmann/.ghcup/env" # ghcup-env
+>>>>>>> Stashed changes
