@@ -126,6 +126,13 @@ alias tl='tmux list-sessions'
 alias td='tmux detach'
 alias tc='clear; tmux clear-history; clear'
 
+# Chezmoi
+alias chez-add='chezmoi add'
+alias chez-edit='chezmoi edit --apply'
+alias chez-cd="chezmoi cd"
+alias chez-apply="chezmoi apply -v"
+alias chez-update="chezmoi update -v"
+
 # Better Yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
